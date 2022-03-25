@@ -4,7 +4,7 @@ const abi = require("./abi.json");
 const { unwrapUniswapLPs } = require("../helper/unwrapLPs");
 const { transformPolygonAddress } = require("../helper/portedTokens");
 
-const MASTERCHEF_CONTRACT = "0x1948abC5400Aa1d72223882958Da3bec643fb4E5";
+const MASTERCHEF_CONTRACT = "0xbD40a260Ddd78287ddA4C4ede5880505a9fEdF9a";
 
 const polygonTvl = async (timestamp, ethBlock, chainBlocks) => {
   const balances = {};
@@ -30,7 +30,7 @@ const polygonTvl = async (timestamp, ethBlock, chainBlocks) => {
         block: chainBlocks["polygon"],
       })
     ).output[0];
-    if(token === "0xAa9654BECca45B5BDFA5ac646c939C62b527D394" || token === "0x388E2a3d389F27504212030c2D42Abf0a8188cd1"){ // DINO and stkGHOST-ETH
+    if(token === "0x40DB6d7812b8288eCA452F912ca9F262b186f278" || token === "0x388E2a3d389F27504212030c2D42Abf0a8188cd1"){ // GREEN and stkGHOST-ETH
       continue;
     }
 
@@ -60,9 +60,8 @@ const polygonTvl = async (timestamp, ethBlock, chainBlocks) => {
     transformAddress
   );
 
-  // eth dino to polygon dino
-  balances['polygon:0xAa9654BECca45B5BDFA5ac646c939C62b527D394'] = balances['0x2701e1d67219a49f5691c92468fe8d8adc03e609']
-  delete balances['0x2701e1d67219a49f5691c92468fe8d8adc03e609']
+  // polygon GREEN
+  balances['polygon:0x40DB6d7812b8288eCA452F912ca9F262b186f278']
 
   return balances;
 };
